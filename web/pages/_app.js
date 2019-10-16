@@ -1,52 +1,28 @@
 import React from 'react'
-import BaseApp, {Container} from 'next/app'
-import client from '../client'
+import BaseApp from 'next/app'
+import { getConfig } from '../services/siteConfig'
+import { Provider } from '../machinery/siteConfig'
 // import 'normalize.css'
 import '../styles/shared.module.css'
 import '../styles/layout.css'
 
-const siteConfigQuery = `
-  *[_id == "global-config"] {
-    ...,
-    logo {asset->{extension, url}},
-    mainNavigation[] -> {
-      ...,
-      "title": page->title
-    },
-    footerNavigation[] -> {
-      ...,
-      "title": page->title
-    }
-  }[0]
-  `
-
 class App extends BaseApp {
-  static async getInitialProps ({Component, ctx}) {
-    let pageProps = {}
+  static async getInitialProps({ Component, ctx }) {
+    const data = [
+      getConfig(),
+      Component.getInitialProps ? Component.getInitialProps(ctx) : {}
+    ]
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
-
-    // Add site config from sanity
-    return client.fetch(siteConfigQuery).then(config => {
-      if (!config) {
-        return {pageProps}
-      }
-      if (config && pageProps) {
-        pageProps.config = config
-      }
-
-      return {pageProps}
-    })
+    const [config, pageProps] = await Promise.all(data)
+    return { pageProps, config }
   }
 
-  render () {
-    const {Component, pageProps} = this.props
+  render() {
+    const { Component, pageProps, config } = this.props
     return (
-      <Container>
+      <Provider value={config}>
         <Component {...pageProps} />
-      </Container>
+      </Provider>
     )
   }
 }

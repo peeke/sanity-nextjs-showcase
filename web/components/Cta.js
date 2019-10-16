@@ -1,44 +1,27 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Link from 'next/link'
 import styles from './Cta.module.css'
 
 function cta (props) {
-  const {title, route, link} = props
+  const {title, externalLink, link} = props
 
-  if (route && route.slug && route.slug.current) {
+  if (link && link.slug && link.slug.current) {
     return (
-      <Link
-        href={{
-          pathname: '/LandingPage',
-          query: {slug: route.slug.current}
-        }}
-        as={`/${route.slug.current}`}
-      >
+      <Link href='/[page]' as={`/${link.slug.current}`}>
         <a className={styles.button}>{title}</a>
       </Link>
     )
   }
 
-  if (link) {
+  if (externalLink) {
     return (
-      <a className={styles.button} href={link}>
+      <a className={styles.button} href={externalLink}>
         {title}
       </a>
     )
   }
 
   return <a className={styles.button}>{title}</a>
-}
-
-cta.propTypes = {
-  title: PropTypes.string.isRequired,
-  route: PropTypes.shape({
-    slug: PropTypes.shape({
-      current: PropTypes.string
-    })
-  }),
-  link: PropTypes.string
 }
 
 export default cta

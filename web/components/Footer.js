@@ -5,8 +5,7 @@ import {withRouter} from 'next/router'
 import styles from './Footer.module.css'
 import SimpleBlockContent from './SimpleBlockContent'
 
-function Footer (props) {
-  const {navItems, text, router} = props
+function Footer ({navItems, text, router}) {
   return (
     <div className={styles.root}>
       <nav>
@@ -14,17 +13,10 @@ function Footer (props) {
           {navItems &&
             navItems.map(item => {
               const isActive =
-                router.pathname === '/LandingPage' && router.query.slug === item.slug.current
+                router.pathname === '/[page]' && router.query.slug === item.slug.current
               return (
                 <li key={item._id} className={styles.item}>
-                  <Link
-                    href={{
-                      pathname: '/LandingPage',
-                      query: {slug: item.slug.current}
-                    }}
-                    as={`/${item.slug.current}`}
-                    prefetch
-                  >
+                  <Link href='[page]' as={`/${item.slug.current}`}>
                     <a data-is-active={isActive ? 'true' : 'false'}>{item.title}</a>
                   </Link>
                 </li>

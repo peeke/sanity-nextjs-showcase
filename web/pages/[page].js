@@ -3,12 +3,15 @@ import { NextSeo } from 'next-seo'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
 import { useSiteConfig } from '../machinery/siteConfig'
-import { getFrontPage } from '../services/page';
+import { getPage } from '../services/page';
 import generateOpenGraphImages from '../machinery/generateOpenGraphImages';
 
-Index.getInitialProps = getFrontPage
+Page.getInitialProps = async function({ query: { page } }) {
+  if (page && page !== '/') return getPage(page)
+  return null
+}
 
-export default function Index({
+export default function Page({
   title = 'Missing title',
   description,
   disallowRobots,

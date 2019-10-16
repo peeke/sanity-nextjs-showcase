@@ -66,7 +66,7 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'route' }],
+          to: [{ type: 'page' }],
         },
       ],
     },
@@ -82,7 +82,7 @@ export default {
       of: [
         {
           type: 'reference',
-          to: [{ type: 'route' }],
+          to: [{ type: 'page' }],
         },
       ],
     },
