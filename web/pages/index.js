@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { NextSeo } from 'next-seo'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'

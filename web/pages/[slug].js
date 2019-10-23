@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { NextSeo } from 'next-seo'
 import Layout from '../components/Layout'
 import RenderSections from '../components/RenderSections'
@@ -6,8 +6,8 @@ import { useSiteConfig } from '../machinery/siteConfig'
 import { getPage } from '../services/page';
 import generateOpenGraphImages from '../machinery/generateOpenGraphImages';
 
-Page.getInitialProps = async function({ query: { page } }) {
-  if (page && page !== '/') return getPage(page)
+Page.getInitialProps = async function({ query: { slug } }) {
+  if (slug && slug !== '/') return getPage(slug)
   return null
 }
 
