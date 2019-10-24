@@ -10,19 +10,16 @@ import siteConfig from './documents/siteConfig'
 
 // Object types
 import pageSettings from './objects/pageSettings'
-import cta from './objects/cta'
-import embedHTML from './objects/embedHTML'
-import figure from './objects/figure'
-import internalLink from './objects/internalLink'
-import link from './objects/link'
-import portableText from './objects/portableText'
-import simplePortableText from './objects/simplePortableText'
-
-// Landing page sections
-import hero from './objects/hero'
-import imageSection from './objects/imageSection'
-import mailchimp from './objects/mailchimp'
-import textSection from './objects/textSection'
+import cta from './objects/parts/cta'
+import internalLink from './objects/parts/internalLink'
+import link from './objects/parts/link'
+import portableText from './objects/parts/portableText'
+import simplePortableText from './objects/parts/simplePortableText'
+import embedHTML from './objects/components/embedHTML'
+import figure from './objects/components/figure'
+import hero from './objects/components/hero'
+import imageSection from './objects/sections/imageSection'
+import textSection from './objects/sections/textSection'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -37,7 +34,6 @@ export default createSchema({
     imageSection,
     internalLink,
     link,
-    mailchimp,
     page,
     pageSettings,
     portableText,

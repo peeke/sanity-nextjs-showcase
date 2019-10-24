@@ -6,8 +6,10 @@ const isProduction = process.env.NODE_ENV === 'production'
 const query = groq`
   *[defined(slug)] {
     ...,
-    disallowRobot,
-    includeInSitemap,
+    pageSettings->{
+      disallowRobot,
+      includeInSitemap,
+    },
     title,
     _updatedAt
   }
