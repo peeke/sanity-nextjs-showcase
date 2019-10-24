@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SimpleBlockContent from '../SimpleBlockContent'
-import styles from './TextSection.module.css'
+import SimpleBlockContent from 'components/SimpleBlockContent'
+import styles from './TextSection.css'
 
 function TextSection({ heading, label, text }) {
   return (

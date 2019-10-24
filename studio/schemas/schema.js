@@ -9,7 +9,7 @@ import page from './documents/page'
 import siteConfig from './documents/siteConfig'
 
 // Object types
-import pageSettings from './objects/pageSettings'
+import pageSettings from './objects/parts/pageSettings'
 import cta from './objects/parts/cta'
 import internalLink from './objects/parts/internalLink'
 import link from './objects/parts/link'

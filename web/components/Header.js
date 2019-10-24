@@ -2,8 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import SVG from 'react-inlinesvg'
-import styles from './Header.module.css'
-import HamburgerIcon from './icons/Hamburger'
+import HamburgerIcon from 'components/icons/Hamburger'
+import styles from './Header.css'
 
 export default function Header({ title = 'Missing title', navItems, logo }) {
   const router = useRouter()

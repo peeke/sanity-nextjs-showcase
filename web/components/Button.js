@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import styles from './Cta.module.css'
+import styles from './Button.css'
 
-function cta (props) {
+function Button (props) {
   const {title, externalLink, link} = props
 
   if (link && link.slug && link.slug.current) {
@@ -24,4 +24,4 @@ function cta (props) {
   return <a className={styles.button}>{title}</a>
 }
 
-export default cta
+export default Button
